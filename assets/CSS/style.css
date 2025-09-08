@@ -1,0 +1,48 @@
+/* ======================
+  MAIN STYLES
+  ====================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ======================
+  LOGIN PAGE STYLES
+  ====================== */
+.passwd-wrap {
+  position: relative;
+}
+
+#show-password {
+  position: absolute;
+  margin-top: -26px;
+  right: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 1.5rem;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: transparent;
+}
+
+#show-password img {
+  width: 100%;
+  height: auto;
+}
