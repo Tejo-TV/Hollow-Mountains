@@ -14,6 +14,9 @@ body {
   color: #333;
   line-height: 1.6;
   scroll-behavior: smooth;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a {
@@ -21,28 +24,143 @@ a {
   color: inherit;
 }
 
-
 /* ======================
   LOGIN PAGE STYLES
   ====================== */
-.passwd-wrap {
-  position: relative;
-}
-
-#show-password {
-  position: absolute;
-  margin-top: -26px;
-  right: 1rem;
-  transform: translateY(-50%);
-  cursor: pointer;
-  width: 1.5rem;
+.container1 {
   display: flex;
   align-items: center;
-  background-color: transparent;
-  border: transparent;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
 }
 
-#show-password img {
+.login-box { 
+  background: white;
+  padding: clamp(18px, 3vw, 25px);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  margin: 20px auto;
+  width: 100%;
+}
+
+.login-box label {
+  display: block;
+  font-weight: 500;
+  margin: 10px 0 5px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.login-box input:focus {
+  border-color: #0077cc;
+}
+
+.login-box span {
+  color: rgb(19, 0, 128);
+  transition: color 0.3s ease;
+}
+
+.login-box span:hover {
+  color: rgb(48, 35, 121);
+}
+
+.signup {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+#imglogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#imglogo img {
+  max-width: 280px;
   width: 100%;
   height: auto;
+  cursor: context-menu;
+}
+
+.login-button {
+  background-color: #0077cc;
+  color: white;
+  text-decoration: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #005fa3;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+
+/* ======================
+  POPUP STYLES
+  ====================== */
+.popup,
+.popup2 {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  animation: popup-fade-in 7s forwards;
+}
+
+.popup {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.popup2 {
+  background-color: #fa2121;
+  color: white;
+}
+
+@keyframes popup-fade-in {
+  0% {
+    opacity: 0;
+    top: 0;
+  }
+  10% {
+    opacity: 1;
+    top: 20px;
+  }
+  90% {
+    opacity: 1;
+    top: 20px;
+  }
+  100% {
+    opacity: 0;
+    top: 0;
+  }
 }
