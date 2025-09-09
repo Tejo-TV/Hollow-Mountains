@@ -28,6 +28,7 @@
         echo "<div class='popup2'>
               <p> 🕵️‍♂️ Je probeert een geheime plek te bezoeken... maar je hebt geen toegang. </p>
               </div>";
+        
       } else if ($_GET["error"] == "wrongLogin") {
         echo "<div class='popup2'>
               <p> 🚫 Verkeerde e-mail of wachtwoord. Probeer opnieuw. </p>
