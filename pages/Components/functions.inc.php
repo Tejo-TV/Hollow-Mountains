@@ -77,7 +77,15 @@ function loginUser($conn, $email, $ww) {
     } else if ($wwChecker === true) {
         session_start();
         $_SESSION["userid"] = $emailExists["ID"];
-        echo "<script>window.location.href = '../account.php?error=none';</script>";
+        if ($emailExists["rol"] == "user"){
+            $_SESSION["userRole"] = "user";
+            echo "<script>window.location.href = '../account-user.php?error=none';</script>";
+        } else if ($emailExists["rol"] == "admin"){
+            $_SESSION["userRole"] = "admin";
+            echo "<script>window.location.href = '../account-admin.php?error=none';</script>";
+        } else {
+            echo "<script>window.location.href = '../login.php?error=stmtfailed';</script>";
+        }
         exit();
     }
 }

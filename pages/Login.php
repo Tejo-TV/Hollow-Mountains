@@ -16,15 +16,12 @@
     <link rel="stylesheet" href="../assets/CSS/style.css" />
     <link rel="shortcut icon" type="x-icon" href="../assets/images/Hollow-Mountains.png">
   </head>
-  <body class="login-page">
+  <body>
 
     <?php
+    // error popups
     if(isset($_GET["error"])) {
-      if ($_GET["error"] == "none"){
-        echo "<div class='popup'>
-              <p> ✅ Account succesvol aangemaakt! Log nu in. </p>
-              </div>";
-      } else if ($_GET["error"] == "wrongWay") {
+      if ($_GET["error"] == "wrongWay") {
         echo "<div class='popup2'>
               <p> 🕵️‍♂️ Je probeert een geheime plek te bezoeken... maar je hebt geen toegang. </p>
               </div>";
