@@ -10,7 +10,7 @@
     $db_server = "localhost"; // server naam
     $db_user = "root"; // usernaam (default is de naam root)
     $db_pass = ""; // wachtwoord (default is er geen wachtwoord)
-    $db_name = "HollowMountains"; // naam database
+    $db_name = "hollow_mountains"; // naam database
     $conn = "";
 
 //connectie met database
@@ -25,10 +25,10 @@ try{
 // Om connectie te testen haal de echo comando's uit de comment (select regel en dan: ctr + /)
 // -----------------------------------------------------------
 catch(mysqli_sql_exception){
-    // echo"<p class='db_error'>Database '$db_name' could <span>not</span> connect!</p>";
+    // echo"<p>Database '$db_name' could not connect!</p>";
 }
 
 if($conn){
-    // echo"<p class='db_connected'>Database '$db_name' is connected!</p>";
+    // echo"<p>Database '$db_name' is connected!</p>";
 } 
 ?>
