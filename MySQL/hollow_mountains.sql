@@ -42,7 +42,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `naam`, `email`, `rol`, `gebruikersnaam`, `wachtwoord`, `adres_ID`) VALUES
-(4, 'New user', 'test@gmail.com', 'admin', 'User', 'c9f33207faf6f59e5201f9b4b2984c5049c92c9197c6cd3d038ee5c1d5047210', 0);
+(1, 'New user', 'test@gmail.com', 'admin', 'User', 'c9f33207faf6f59e5201f9b4b2984c5049c92c9197c6cd3d038ee5c1d5047210', 0);
 
 --
 -- Indexes for dumped tables
