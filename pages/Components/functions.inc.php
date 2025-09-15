@@ -79,10 +79,10 @@ function loginUser($conn, $email, $ww) {
         $_SESSION["userid"] = $emailExists["ID"];
         if ($emailExists["rol"] == "user"){
             $_SESSION["userRole"] = "user";
-            echo "<script>window.location.href = '../account-user.php?error=none';</script>";
+            echo "<script>window.location.href = '../user-pages/account-user.php?error=none';</script>";
         } else if ($emailExists["rol"] == "admin"){
             $_SESSION["userRole"] = "admin";
-            echo "<script>window.location.href = '../account-admin.php?error=none';</script>";
+            echo "<script>window.location.href = '../admin-pages/account-admin.php?error=none';</script>";
         } else {
             echo "<script>window.location.href = '../login.php?error=stmtfailed';</script>";
         }

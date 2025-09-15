@@ -173,17 +173,99 @@ a {
   ADMIN-PROFILE PAGE STYLES
   ====================== */
 
-
 .sidebar {
-  width: 10%;
-  height: 100vh;
-  background-color: #3E2F6D;
-  border-right: 1px solid black;
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    width: 10%;
+    background-color: #3E2F6D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
 }
+
+.sidebar .logo {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar .logo img {
+    width: 70%;
+    height: auto;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.sidebar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%; 
+    height: 60px;
+    margin: 10px 0;
+    background-color: #1C2A4A; 
+    color: #F9A825;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 24px;
+    transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+    background-color: #F9A825;
+    color: #3E2F6D;
+}
+
+.sidebar a i {
+    pointer-events: none;
+}
+
 
 .profileHome-admin {
   width: 90%;
   height: 100vh;
   background-color: #1C2A4A;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.admin-card {
+  background: #3E2F6D;
+  border-radius: 12px;
+  text-align: center;
+  padding: 40px 30px;
+  text-decoration: none;
+  color: #E0E0E0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-card i {
+  font-size: 60px;
+  margin-bottom: 15px;
+  color: #F9A825;
+}
+
+.admin-card h3 {
+  margin: 12px 0 8px;
+  font-size: 24px;
+  color: #F9A825;
+}
+
+.admin-card p {
+  font-size: 16px;
+  color: #E0E0E0;
+}
+
+.admin-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
 }
