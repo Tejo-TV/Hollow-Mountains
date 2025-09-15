@@ -31,12 +31,11 @@ if ($_SESSION["userRole"] == "admin"){
             <img src="../../assets/images/Hollow-Mountains.png" alt="Logo">
         </div>
         <a href="account-admin.php"><i class="fas fa-home"></i></a>
-        <a href="#"><i class="fas fa-bell"></i></i></a>
-        <a href="#"><i class="fas fa-cog"></i></a>
+        <a href="#"><i class="fas fa-bell"></i></a>
         <a href="#"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 
-    <div class="profileHome-admin">
+    <div class="admin-dashboard">
             
     </a>
 </body>
