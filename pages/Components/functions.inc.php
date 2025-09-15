@@ -78,9 +78,11 @@ function loginUser($conn, $email, $ww) {
         session_start();
         $_SESSION["userid"] = $emailExists["ID"];
         if ($emailExists["rol"] == "user"){
+            session_start();
             $_SESSION["userRole"] = "user";
             echo "<script>window.location.href = '../user-pages/account-user.php?error=none';</script>";
         } else if ($emailExists["rol"] == "admin"){
+            session_start();
             $_SESSION["userRole"] = "admin";
             echo "<script>window.location.href = '../admin-pages/account-admin.php?error=none';</script>";
         } else {

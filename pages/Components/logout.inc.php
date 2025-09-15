@@ -12,5 +12,5 @@ session_unset();
 session_destroy();
 
 // Stuur de gebruiker terug naar de loginpagina met de uilog melding
-header("Location: ../login.php?error=uitgelogd");
+echo "<script>window.location.href = '../login.php?error=uitgelogd';</script>";
 exit();

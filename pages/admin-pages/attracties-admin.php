@@ -1,3 +1,19 @@
+<?php 
+//---------------------------------------------------------------------------------------------------//
+// Naam script		    : attracties-admin.php
+// Omschrijving		    : Dit is de admin pannel voor alle atracties.
+// Naam ontwikkelaar    : Tejo Veldman
+// Project		        : Hollow Mountains
+// Datum		        : Schooljaar 3 - periode 1 - 2025
+//---------------------------------------------------------------------------------------------------//
+session_start();
+// checken of persoon is ingelogd
+if ($_SESSION["userRole"] == "admin"){
+  echo "<script>console.log('Juiste rol');</script>";
+} else {
+  echo "<script>window.location.href = '../login.php?error=wrongWay';</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
