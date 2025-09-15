@@ -21,6 +21,16 @@
     }
     ?>
 
+  <div id="signoutOverlay" class="signout-overlay">
+    <div class="signout">
+      <h2>Wil je echt uitloggen?</h2>
+      <div class="buttons">
+        <button  onclick="window.location.href='../Components/logout.inc.php'">Uitloggen</button>
+        <button onclick="closeSignOutOverlay()">Annuleren</button>
+      </div>
+    </div>
+  </div>
+
 <div class="sidebar">
     <div class="logo">
         <img src="../../assets/images/Hollow-Mountains.png" alt="Logo">
@@ -28,7 +38,7 @@
     <a href="account-admin.php"><i class="fas fa-home"></i></a>
     <a href="#"><i class="fas fa-bell"></i></i></a>
     <a href="#"><i class="fas fa-cog"></i></a>
-    <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+    <a onclick="signOutOverlay()"><i class="fas fa-sign-out-alt"></i></a>
 </div>
 
     <div class="profileHome-admin">
@@ -70,4 +80,5 @@
     </div>
 
 </body>
+<script src="../../assets/JS/Script.js"></script>
 </html>
