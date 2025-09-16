@@ -66,7 +66,58 @@ if ($_SESSION["userRole"] == "admin"){
         
 
       <div class="account-card">
+        <h2>Gebruikers Instellingen</h2>
+        <!-- Persoonlijke info -->
+        <form id="personalForm">
+          <div class="form-group">
+            <label for="fullName">Naam</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Gebruikers volledige naam">
+          </div>
+          <div class="form-group">
+            <label for="nickname">Roepnaam</label>
+            <input type="text" id="nickname" name="nickname" placeholder="Gebruikers roepnaam">
+          </div>
+          <div class="form-group">
+            <label for="password">Wachtwoord</label>
+            <input type="password" id="password" name="password" placeholder="Gebruikers nieuw wachtwoord">
+          </div>
+          <div class="buttons">
+            <button type="submit">Opslaan</button>
+          </div>
+        </form>
 
+        <!-- Adres info -->
+        <form id="addressForm">
+          <div class="address-grid">
+            <div class="form-group">
+              <label for="street">Straat</label>
+              <input type="text" id="street" name="street" placeholder="Straat">
+            </div>
+            <div class="form-group">
+              <label for="houseNumber">Huisnummer</label>
+              <input type="text" id="houseNumber" name="houseNumber" placeholder="Huisnummer">
+            </div>
+            <div class="form-group">
+              <label for="addition">Toevoeging</label>
+              <input type="text" id="addition" name="addition" placeholder="Toevoeging">
+            </div>
+            <div class="form-group">
+              <label for="postcode">Postcode</label>
+              <input type="text" id="postcode" name="postcode" placeholder="Postcode">
+            </div>
+            <div class="form-group">
+              <label for="city">Stad</label>
+              <input type="text" id="city" name="city" placeholder="Stad">
+            </div>
+            <div class="form-group">
+              <label for="country">Land</label>
+              <input type="text" id="country" name="country" placeholder="Land">
+            </div>
+          </div>
+          <div class="buttons">
+            <button type="submit">Opslaan</button>
+          </div>
+        </form>
       </div>
     </div>
 </body>

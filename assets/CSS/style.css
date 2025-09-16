@@ -457,7 +457,7 @@ a {
 } 
 
 /* ======================
-  SETTINGS OVERLAY STYLES
+  USERS-PAGE STYLES
   ====================== */
 
 .admin-account-dashboard {
@@ -489,6 +489,7 @@ a {
   overflow-y: auto;
 }
 
+/* Linker card */
 .account-card-user {
   background: #1C2A4A;
   border-radius: 12px;
@@ -521,4 +522,80 @@ a {
 .account-card-user p {
   font-size: 24px;
   color: #F9A825;
+}
+
+/* Rechter card */
+/* Form */
+.account-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.account-card .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-card label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.account-card input {
+  padding: 8px 11px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
+
+/* Buttons */
+.account-card .buttons {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.account-card button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.account-card button {
+  background-color: #1C2A4A;
+  color: #F9A825;
+}
+
+.account-card button:hover {
+  background-color: #16203a;
+}
+
+/* Adres grid */
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolommen naast elkaar */
+  gap: 15px;
+}
+
+.address-grid .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .address-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 kolommen */
+  }
+}
+
+@media (max-width: 600px) {
+  .address-grid {
+    grid-template-columns: 1fr; /* 1 kolom */
+  }
 }
