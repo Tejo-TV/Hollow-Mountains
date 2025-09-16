@@ -36,8 +36,38 @@ if ($_SESSION["userRole"] == "admin"){
         <a href="#"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 
-    <div class="admin-dashboard">
-            
-    </a>
+    <!-- Users Dashboard -->
+    <?php
+      require_once '../../config/DB_connect.php';
+      $sql = "SELECT * FROM user";
+      $result = $conn->query($sql);
+    ?>
+
+    <div class="admin-account-dashboard">
+
+      <div class="account-card">
+      <?php
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+              echo "<div class='account-card-user'>
+                      <p>". $row['naam'] . "</p> 
+                      <div class='icons'>
+                        <a onclick='userEdit(" . $row['ID'] . ")'><img src='../../assets/images/icons/user-edit.svg' /></a>
+                        <a onclick='userLock(" . $row['ID'] . ")'><img src='../../assets/images/icons/user-lock.svg' /></a>
+                        <a onclick='userRemove(" . $row['ID'] . ")'><img src='../../assets/images/icons/user-remove.svg' /></a>
+                      </div>
+                    </div>";
+          }
+        } else {
+          echo "Geen gebruikers gevonden";
+        }
+        ?>
+        </div>
+        
+
+      <div class="account-card">
+
+      </div>
+    </div>
 </body>
 </html>
