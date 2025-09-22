@@ -33,6 +33,7 @@ if ($_SESSION["userRole"] == "admin"){
         </div>
         <a href="account-admin.php"><i class="fas fa-home"></i></a>
         <a href="#"><i class="fas fa-bell"></i></a>
+        <a href="#"><i class="fas fa-user-plus" id="userIcon"></i></a>
         <a href="#"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 
@@ -52,9 +53,9 @@ if ($_SESSION["userRole"] == "admin"){
               echo "<div class='account-card-user'>
                       <p>". $row['naam'] . "</p> 
                       <div class='icons'>
-                        <a onclick='userEdit(" . $row['ID'] . ")'><img src='../../assets/images/icons/user-edit.svg' /></a>
-                        <a onclick='userLock(" . $row['ID'] . ")'><img src='../../assets/images/icons/user-lock.svg' /></a>
-                        <a onclick='userRemove(" . $row['ID'] . ")'><img src='../../assets/images/icons/user-remove.svg' /></a>
+                        <a onclick='userEdit();'><img src='../../assets/images/icons/user-edit.svg' /></a>
+                        <a onclick='userLock();'><img src='../../assets/images/icons/user-lock.svg' /></a>
+                        <a onclick='userRemove();'><img src='../../assets/images/icons/user-remove.svg' /></a>
                       </div>
                     </div>";
           }
@@ -121,4 +122,5 @@ if ($_SESSION["userRole"] == "admin"){
       </div>
     </div>
 </body>
+<script src="../../assets/JS/Script.js"></script>
 </html>

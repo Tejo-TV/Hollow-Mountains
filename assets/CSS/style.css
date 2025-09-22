@@ -527,7 +527,7 @@ a {
 /* Rechter card */
 /* Form */
 .account-card form {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 15px;
   text-align: left;
