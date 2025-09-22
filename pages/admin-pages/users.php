@@ -1,32 +1,32 @@
 <?php 
 //---------------------------------------------------------------------------------------------------//
 // Script Name         : users.php
-// Description         : Admin panel for managing users.
+// Description         : Admin panel for managing users
 // Developer           : Tejo Veldman
 // Project             : Hollow Mountains
-// Date                : School year 3 - period 1 - 2025
+// Date                : School Year 3 - Period 1 - 2025
 //---------------------------------------------------------------------------------------------------//
 
 session_start();
+require_once '../../config/DB_connect.php';
 
 // Check if user is logged in as admin
-if ($_SESSION["userRole"] == "admin") {
-    echo "<script>console.log('Correct role');</script>";
-} else {
+if ($_SESSION["userRole"] !== "admin") {
     echo "<script>window.location.href = '../login.php?error=wrongWay';</script>";
+    exit();
 }
 
 // Show error/success popups based on URL parameters
 if (isset($_GET["error"])) {
-    if ($_GET["error"] == "opgeslagen") {
+    if ($_GET["error"] === "opgeslagen") {
         echo "<div class='popup'>
                 <p> ✅ Data successfully saved! </p>
               </div>";
-    } else if ($_GET["error"] == "nietOpgeslagen") {
+    } elseif ($_GET["error"] === "nietOpgeslagen") {
         echo "<div class='popup2'>
                 <p> ❌ Something went wrong while saving. Please try again. </p>
               </div>";
-    } else if ($_GET["error"] == "addressOpgeslagen") {
+    } elseif ($_GET["error"] === "addressOpgeslagen") {
         echo "<div class='popup'>
                 <p> ✅ Address successfully saved! </p>
               </div>";
@@ -56,91 +56,87 @@ if (isset($_GET["error"])) {
         <a href="#"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 
-<!-- Settings overlay -->
-<div id="settingsOverlay" class="settings-overlay">
-  <div class="settings">
-    <h2>Nieuwe gebruiker aanmaken</h2>
+    <!-- Settings overlay for creating a new user -->
+    <div id="settingsOverlay" class="settings-overlay">
+        <div class="settings">
+            <h2>Create New User</h2>
 
-    <button class="close-btn" onclick="closeSettingsOverlay()">×</button>
+            <button class="close-btn" onclick="closeSettingsOverlay()">×</button>
 
-    <!-- Form for creating a new user -->
-    <form id="newUserForm" method="POST">
+            <!-- New User Form -->
+            <form id="newUserForm" method="POST">
+                <!-- Personal info -->
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Name">
+                </div>
 
-      <!-- Personal info -->
-      <div class="form-group">
-        <label for="fullName">Naam</label>
-        <input type="text" id="fullName" name="fullName" placeholder="Volledige naam">
-      </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Email">
+                </div>
 
-      <div class="form-group">
-        <label for="email">E-mailadres</label>
-        <input type="email" id="email" name="email" placeholder="E-mailadres">
-      </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <select id="role" name="role">
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
 
-      <div class="form-group">
-        <label for="role">Rol</label>
-        <select id="role" name="role">
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
+                <div class="form-group">
+                    <label for="nickname">Nickname</label>
+                    <input type="text" id="nickname" name="nickname" placeholder="Nickname">
+                </div>
 
-      <div class="form-group">
-        <label for="nickname">Roepnaam</label>
-        <input type="text" id="nickname" name="nickname" placeholder="Roepnaam">
-      </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
 
-      <div class="form-group">
-        <label for="password">Wachtwoord</label>
-        <input type="password" id="password" name="password" placeholder="Wachtwoord">
-      </div>
+                <hr style="margin:20px 0; border-color:#555;" />
 
-      <hr style="margin:20px 0; border-color:#555;" />
+                <!-- Address info -->
+                <div class="address-grid">
+                    <div class="form-group">
+                        <label for="street">Street</label>
+                        <input type="text" id="street" name="street" placeholder="Street">
+                    </div>
+                    <div class="form-group">
+                        <label for="houseNumber">House Number</label>
+                        <input type="text" id="houseNumber" name="houseNumber" placeholder="House Number">
+                    </div>
+                    <div class="form-group">
+                        <label for="addition">Addition</label>
+                        <input type="text" id="addition" name="addition" placeholder="Addition">
+                    </div>
+                    <div class="form-group">
+                        <label for="postcode">Postcode</label>
+                        <input type="text" id="postcode" name="postcode" placeholder="Postcode">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="City">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" placeholder="Country">
+                    </div>
+                </div>
 
-      <!-- Address info -->
-      <div class="address-grid">
-        <div class="form-group">
-          <label for="street">Straat</label>
-          <input type="text" id="street" name="street" placeholder="Straat">
+                <!-- Save button -->
+                <div class="buttons">
+                    <button type="submit" name="new-user">Save New User</button>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-          <label for="houseNumber">Huisnummer</label>
-          <input type="text" id="houseNumber" name="houseNumber" placeholder="Huisnummer">
-        </div>
-        <div class="form-group">
-          <label for="addition">Toevoeging</label>
-          <input type="text" id="addition" name="addition" placeholder="Toevoeging">
-        </div>
-        <div class="form-group">
-          <label for="postcode">Postcode</label>
-          <input type="text" id="postcode" name="postcode" placeholder="Postcode">
-        </div>
-        <div class="form-group">
-          <label for="city">Stad</label>
-          <input type="text" id="city" name="city" placeholder="Stad">
-        </div>
-        <div class="form-group">
-          <label for="country">Land</label>
-          <input type="text" id="country" name="country" placeholder="Land">
-        </div>
-      </div>
-
-      <!-- Save button -->
-      <div class="buttons">
-        <button type="submit" name="new-user">Nieuwe gebruiker opslaan</button>
-      </div>
-    </form>
-  </div>
-</div>
-
+    </div>
 
     <!-- Users Dashboard -->
     <?php
-        require_once '../../config/DB_connect.php';
-
-        // Get all users from database
+        // Get all users from the database
         $sql = "SELECT * FROM user";
-        $result = $conn->query($sql);
+        $result = $conn->query($sql); 
     ?>
 
     <div class="admin-account-dashboard">
@@ -174,6 +170,7 @@ if (isset($_GET["error"])) {
             <h2>User Settings</h2>
         </div>  
     </div>
+
+    <script src="../../assets/JS/Script.js"></script>
 </body>
-<script src="../../assets/JS/Script.js"></script>
 </html>
