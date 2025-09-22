@@ -381,11 +381,14 @@ a {
   font-weight: bold;
 }
 
+.settings select,
 .settings input {
   padding: 8px 12px;
   border-radius: 6px;
   border: none;
   font-size: 14px;
+  background-color: #fff;
+  color: #000;  
 }
 
 /* Buttons */
@@ -527,7 +530,7 @@ a {
 /* Rechter card */
 /* Form */
 .account-card form {
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 15px;
   text-align: left;
