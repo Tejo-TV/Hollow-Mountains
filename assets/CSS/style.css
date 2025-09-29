@@ -71,6 +71,73 @@ a {
     top: 0;
   }
 }
+/* ======================
+  HOME PAGE STYLES
+  ====================== */
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    padding: 20px;
+    gap: 25px;
+}
+
+.homepage-container h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #F9A825;
+}
+
+.homepage-container p {
+    font-size: 1.2rem;
+    color: #E0E0E0;
+}
+
+.homepage-image {
+    max-width: 400px;
+    width: 80%;
+    height: auto;
+}
+
+.homepage-button {
+    background-color: #F9A825;
+    color: #1C2A4A;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.3rem;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.homepage-button:hover {
+    background-color: #FFD54F;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .homepage-container h1 {
+        font-size: 2.2rem;
+    }
+    .homepage-container p {
+        font-size: 1rem;
+    }
+    .homepage-image {
+        max-width: 300px;
+    }
+    .homepage-button {
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+    }
+}
+
 
 /* ======================
   LOGIN PAGE STYLES
