@@ -13,3 +13,9 @@ function settingsOverlay() {
 function closeSettingsOverlay() {
     document.getElementById('settingsOverlay').style.display = 'none';
 }
+
+window.onload = function() {
+  if (window.location.hash === "#start") {
+    settingsOverlay();
+  }
+};

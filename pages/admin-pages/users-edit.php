@@ -38,7 +38,7 @@ if (isset($_POST['update-user'])) {
     }
 
     if ($query) {
-        echo "<script>window.location.href = 'users.php?success=userSaved';</script>";
+        echo "<script>window.location.href = 'users.php?error=userSaved';</script>";
         exit();
     } else {
         echo "<script>window.location.href = 'users.php?error=userNotSaved';</script>";
@@ -61,7 +61,7 @@ if (isset($_POST['update-user-address'])) {
     );
 
     if ($query) {
-        echo "<script>window.location.href = 'users.php?success=addressSaved';</script>";
+        echo "<script>window.location.href = 'users.php?success=userSaved';</script>";
         exit();
     } else {
         echo "<script>window.location.href = 'users.php?error=addressNotSaved';</script>";
@@ -112,7 +112,7 @@ if ($result_address && $result_address->num_rows === 1) {
         </div>
         <a href="account-admin.php"><i class="fas fa-home"></i></a>
         <a href="#"><i class="fas fa-bell"></i></a>
-        <a href="#"><i class="fas fa-user-plus" id="userIcon"></i></a>
+        <a onclick="window.location.href='users.php#start'"><i class="fas fa-user-plus" id="userIcon"></i></a>
         <a href="#"><i class="fas fa-sign-out-alt"></i></a>
     </div>
 

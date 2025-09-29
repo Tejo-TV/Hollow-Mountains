@@ -16,19 +16,69 @@ if ($_SESSION["userRole"] !== "admin") {
     exit();
 }
 
+// Create new user
+if (isset($_POST['new-user'])) {
+    $fullname_create = $_POST['fullName'];
+    $email_create = $_POST['email'];
+    $role_create = $_POST['role'];
+    $nickname_create = $_POST['nickname'];
+    $password_create = hash('sha256', $_POST['password']);
+    $street_create = $_POST['street'];
+    $houseNumber_create = $_POST['houseNumber'];
+    $addition_create = $_POST['addition'];
+    $postcode_create = $_POST['postcode'];
+    $city_create = $_POST['city'];
+    $country_create = $_POST['country'];
+
+    $insertUserQuery = "INSERT INTO user (naam, email, rol, gebruikersnaam, wachtwoord) 
+                        VALUES ('$fullname_create', '$email_create', '$role_create', '$nickname_create', '$password_create')";
+
+    $resultUser = mysqli_query($conn, $insertUserQuery);
+
+    if ($resultUser) {
+        $user_id = mysqli_insert_id($conn);
+
+        $insertAddressQuery = "INSERT INTO address (straat, huisnummer, toevoeging, postcode, stad, land, user_ID)
+                               VALUES ('$street_create', '$houseNumber_create', '$addition_create', '$postcode_create', '$city_create', '$country_create', '$user_id')";
+
+        $resultAddress = mysqli_query($conn, $insertAddressQuery);
+
+        if ($resultAddress) {
+            echo "<script>window.location.href = 'users.php?success=userCreated';</script>";
+            exit();
+        } else {
+            // Adres niet opgeslagen
+            echo "<script>window.location.href = 'users.php?error=userNotCreated';</script>";
+            exit();
+        }
+    } else {
+        // User niet opgeslagen
+        echo "<script>window.location.href = 'users.php?error=userNotCreated';</script>";
+        exit();
+    }
+}
+
 // Show error/success popups based on URL parameters
 if (isset($_GET["error"])) {
-    if ($_GET["error"] === "opgeslagen") {
+    if ($_GET["error"] === "userSaved") {
         echo "<div class='popup'>
                 <p> ✅ Data successfully saved! </p>
               </div>";
-    } elseif ($_GET["error"] === "nietOpgeslagen") {
+    } else if ($_GET["error"] === "userNotSaved") {
         echo "<div class='popup2'>
                 <p> ❌ Something went wrong while saving. Please try again. </p>
               </div>";
-    } elseif ($_GET["error"] === "addressOpgeslagen") {
+    } else if ($_GET["error"] === "addressNotSaved") {
         echo "<div class='popup'>
                 <p> ✅ Address successfully saved! </p>
+              </div>";
+    } else if ($_GET["error"] === "userCreated") {
+        echo "<div class='popup'>
+                <p> ✅ User successfully created! </p>
+              </div>";
+    } else if ($_GET["error"] === "userNotCreated") {
+        echo "<div class='popup'>
+                <p> ❌ Something went wrong while creating. Please try again. </p>
               </div>";
     }
 }
@@ -68,17 +118,17 @@ if (isset($_GET["error"])) {
                 <!-- Personal info -->
                 <div class="form-group">
                     <label for="fullName">Full Name</label>
-                    <input type="text" id="fullName" name="fullName" placeholder="Full Name">
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Email">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
                 </div>
 
                 <div class="form-group">
                     <label for="role">Role</label>
-                    <select id="role" name="role">
+                    <select id="role" name="role" required>
                         <option value="user">User</option>
                         <option value="admin">Admin</option>
                     </select>
@@ -86,12 +136,12 @@ if (isset($_GET["error"])) {
 
                 <div class="form-group">
                     <label for="nickname">Nickname</label>
-                    <input type="text" id="nickname" name="nickname" placeholder="Nickname">
+                    <input type="text" id="nickname" name="nickname" placeholder="Nickname" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
 
                 <hr style="margin:20px 0; border-color:#555;" />
@@ -100,11 +150,11 @@ if (isset($_GET["error"])) {
                 <div class="address-grid">
                     <div class="form-group">
                         <label for="street">Street</label>
-                        <input type="text" id="street" name="street" placeholder="Street">
+                        <input type="text" id="street" name="street" placeholder="Street" required>
                     </div>
                     <div class="form-group">
                         <label for="houseNumber">House Number</label>
-                        <input type="text" id="houseNumber" name="houseNumber" placeholder="House Number">
+                        <input type="text" id="houseNumber" name="houseNumber" placeholder="House Number" required>
                     </div>
                     <div class="form-group">
                         <label for="addition">Addition</label>
@@ -112,15 +162,15 @@ if (isset($_GET["error"])) {
                     </div>
                     <div class="form-group">
                         <label for="postcode">Postcode</label>
-                        <input type="text" id="postcode" name="postcode" placeholder="Postcode">
+                        <input type="text" id="postcode" name="postcode" placeholder="Postcode" required>
                     </div>
                     <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" id="city" name="city" placeholder="City">
+                        <input type="text" id="city" name="city" placeholder="City" required>
                     </div>
                     <div class="form-group">
                         <label for="country">Country</label>
-                        <input type="text" id="country" name="country" placeholder="Country">
+                        <input type="text" id="country" name="country" placeholder="Country" required>
                     </div>
                 </div>
 
