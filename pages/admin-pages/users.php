@@ -103,7 +103,18 @@ if (isset($_GET["error"])) {
         <a href="account-admin.php"><i class="fas fa-home"></i></a>
         <a href="#"><i class="fas fa-bell"></i></a>
         <a onclick="settingsOverlay()"><i class="fas fa-user-plus" id="userIcon"></i></a>
-        <a href="#"><i class="fas fa-sign-out-alt"></i></a>
+        <a onclick="signOutOverlay()"><i class="fas fa-sign-out-alt"></i></a>
+    </div>
+
+    <!-- Logout overlay -->
+    <div id="signoutOverlay" class="signout-overlay">
+        <div class="signout">
+            <h2>Do you really want to log out?</h2>
+            <div class="buttons">
+                <button onclick="window.location.href='../Components/logout.inc.php'">Log Out</button>
+                <button onclick="closeSignOutOverlay()">Cancel</button>
+            </div>
+        </div>
     </div>
 
     <!-- Settings overlay for creating a new user -->
